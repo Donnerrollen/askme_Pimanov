@@ -1,0 +1,44 @@
+{% extends 'layouts/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="d-flex flex-column col">
+
+                    <div class="d-flex flex-row m-2">
+                        <h1 class="me-2">Settings:</h1>
+                        <h1 id="username">Dr.Pepper</h1>
+                    </div>
+
+                    <div class="d-flex flex-row m-2">
+                    <form class="d-flex flex-column ms-2 me-5 gap-1 justify-content-between" action="{% url 'settings' %}" method="POST">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text col-4" id="nq-login">Login</span>
+                            <input disabled size="40" type="text" class="form-control" placeholder="Login" aria-label="Login" aria-describedby="Login" value="dr_pepper"></input>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text col-4" id="nq-email">Email</span>
+                            <input name="email" type="email" size="25" maxlength="25" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="Email"></textarea>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text col-4" id="nq-nick">NickName</span>
+                            <input name="nickname" type="text" size="25" maxlength="25" class="form-control" placeholder="NickName" aria-label="NickName" aria-describedby="NickName" value="Dr.Pepper"></input>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text col-4" id="nq-vatar">Upload avatar</span>
+                            <img class="img-thumbnail" src='{% static 'img/avatar.png' %}' width="64" height="64" alt="Avatar">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="col-4"></span>
+                            <input disabled type="text" maxlength="128" class="form-control col" placeholder="File" aria-label="File" aria-describedby="File" value="C:\Temp\Avatar.jpg"></input>
+                            <button class="btn btn-outline-secondary" type="button" style="border-end-end-radius: 20px; border-top-right-radius: 20px;">choose</button>
+                        </div>
+                        <div class="d-flex">
+                            <span class="col-4"></span>
+                            <button class="btn btn-outline-primary" type="submit">Save</button>
+                        </div>
+                    </form>
+                    </div>
+
+                </div>
+{% endblock %}

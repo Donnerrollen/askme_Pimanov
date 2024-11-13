@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Document</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+        <style>
+            .btn-outline-success {
+                background-color: darkseagreen;
+                color: white;
+            }
+
+            .btn-outline-secondary {
+                border-color: lightgrey  !important;
+            }
+            
+            .btn-outline-secondary:hover {
+                background-color: whitesmoke !important;
+                color: grey;
+            }
+            
+            .btn-outline-secondary:active {
+                background-color: lightgrey !important;
+            }
+            
+            .page-item {
+                height: 38px;
+            }            
+        </style>
+
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg bg-body-tertiary w-100">
+            <div class="container-fluid">
+                <div class="d-flex align-items-center w-1">
+                    <a href="{% url 'index' %}" class="navbar-brand">AskPimanov</a>
+                </div>
+                <div class="d-flex justify-content-between align-items-center w-8">
+                    <form class="d-flex gap-1" role="search" style="width: 350px;" action="{% url 'ask' %}" method="POST">
+                        {% csrf_token %}
+                        <input name="title" class="form-control" style="border-radius: 20px;" type="search" placeholder="Question" aria-label="Question"></input>
+                        <button name="submit_1" class="btn btn-outline-success" type="submit">Ask!</button>
+                    </form>
+                </div>
+                <div class="d-flex w-2 gap-1">
+                    <img class="img-thumbnail" width="48" height="48" src="{% static 'img/avatar.png' %}" alt="Avatar">
+                    <div class="d-flex flex-column">
+                        <div>Dr.Pepper</div>
+                        <div>
+                            <a href="{% url 'settings' %}">Settings</a>
+                            <a href="#">Log out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="d-block m-0 p-0">
+
+            <div class="d-flex gap-2 ms-2 flex-row justify-content-between">
+
+                {% block content %}
+                {% endblock %}
+
+                <aside class="d-flex flex-column mt-5 me-2 col-3">
+                    <section class="popular-tags">
+                        <h3 class="mb-2">Popular Tags</h3>
+                        <nav class="d-flex gap-2 flex-wrap">
+                            <a href="{% url 'tag' 'perl' %}" style="text-decoration: none; color: black;">perl</a>
+                            <a href="{% url 'tag' 'python' %}" style="text-decoration: none; color: red;">python</a>
+                            <a href="{% url 'tag' 'TechnoPark' %}" style="text-decoration: none; color: blue;">TechnoPark</a>
+                            <a href="{% url 'tag' 'MySQL' %}" style="text-decoration: none; color: red;">MySQL</a>
+                            <a href="{% url 'tag' 'django' %}" style="text-decoration: none; color: green;">django</a>
+                            <a href="{% url 'tag' 'Mail.ru' %}" style="text-decoration: none; color: black;">Mail.ru</a>
+                            <a href="{% url 'tag' 'Voloshin' %}" style="text-decoration: none; color: black;">Voloshin</a>
+                            <a href="{% url 'tag' 'Firefox' %}" style="text-decoration: none; color: orange;">Firefox</a>
+                        </nav>
+                    </section>
+                    <section class="best-members">
+                        <h3 class="mt-4 mb-2">Best Members</h3>
+                        <ul class="d-flex flex-column gap-1 ps-0">
+                            <li class="list-group-item"><a href="#">Donnerrollen</a></li>
+                            <li class="list-group-item"><a href="#">Dr. Kisilev</a></li>
+                            <li class="list-group-item"><a href="#">Pushkin</a></li>
+                            <li class="list-group-item"><a href="#">Lermontov</a></li>
+                            <li class="list-group-item"><a href="#">Tolstoy</a></li>
+                            <li class="list-group-item"><a href="#">Man</a></li>
+                        </ul>
+                    </section>
+                </aside>
+
+            </div>
+        </main>
+
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    </body>
+
+    <footer></footer>
+</html>
